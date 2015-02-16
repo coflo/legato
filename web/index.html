@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
@@ -43,29 +42,22 @@
 					</div>
 				</div>
 				<div id="startContainer" class="inner cover">
+					<h1 class="cover-heading">LEGATO by Coflo</h1>
+					<p class="lead">Are you ready for the adventure?</p>
 					<p class="lead">
-						<div class="endMessage">You missed these videos, want to watch them?</div>
-					</p>
-					<p class="lead">
-						<div class="videoList">
-							<script id="listTemplate" type="text/template">
-								{{#items}}
-								<div class="videoPod">
-									<div class="id">{{id}}</div>
-									{{#snippet}}
-									<div class="thumb">{{#thumbnails}}{{#default}}<img src="{{url}}" width="{{width}}" height="{{height}}" alt="{{title}}" />{{/default}}{{/thumbnails}}</div>
-									<div class="title">{{title}}</div>
-									{{/snippet}}
-								</div>
-								{{/items}}
-							</script>
-						</div>
+						<a href="#" id="startLegato" class="btn btn-lg btn-default">Start Legato</a>
 					</p>
 				</div>
 
 				<div class="mastfoot">
 					<div class="inner">
 						<p>Powered by Good Music, brought to you by Soulshifers, Circle of Fire, SourPatch, Flo-ology and Catch the Ghost.</p>
+					</div>
+				</div>
+
+				<div class="chapterControls">
+					<div class="inner">
+						<p><a class="chapterButtonsDance">Lets Dance</a> - <a class="chapterButtonsSkip">Lets Skip</a></p>
 					</div>
 				</div>
 
@@ -82,9 +74,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="swfobject.js"></script>
-	<script src="mustache.js"></script>
-	<script src="dvs_playlist.js"></script>
-	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+	<script src="main.js"></script>
 
 </body>
 </html>
