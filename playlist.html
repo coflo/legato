@@ -1,90 +1,88 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <!-- Latest compiled and minified CSS -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../favicon.ico">
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	 <!-- Custom styles for this template -->
-    <link href="styles.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/styles.css" rel="stylesheet">
 
-    <title>LEGATO by Coflo</title>
+	<title>LEGATO by Coflo</title>
 
+</head>
 
+<body>
 
-  </head>
+	<div class="site-wrapper">
 
-  <body>
+		<div class="site-wrapper-inner">
 
-    <div class="site-wrapper">
+			<!--container for the movies-->
+			<div id="movieContainer">
+				<div id="player"></div>
+			</div>
 
-      <div class="site-wrapper-inner">
-		  
-		  <!--container for the movies-->
-		  <div id="movieContainer">
-				  <div id="player"></div>
-		  </div>
+			<div class="cover-container">
+				<div class="masthead clearfix">
+					<div class="inner">
+						<h3 class="masthead-brand">LEGATO</h3>
+						<ul class="nav masthead-nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#">Features</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="startContainer" class="inner cover">
+					<p class="lead">
+						<div class="endMessage">You missed these videos, want to watch them?</div>
+					</p>
+					<p class="lead">
+						<div class="videoList">
+							<script id="listTemplate" type="text/template">
+								{{#items}}
+								<div class="videoPod">
+									<div class="id">{{id}}</div>
+									{{#snippet}}
+									<div class="thumb">{{#thumbnails}}{{#default}}<img src="{{url}}" width="{{width}}" height="{{height}}" alt="{{title}}" />{{/default}}{{/thumbnails}}</div>
+									<div class="title">{{title}}</div>
+									{{/snippet}}
+								</div>
+								{{/items}}
+							</script>
+						</div>
+					</p>
+				</div>
 
-        <div class="cover-container">	
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">LEGATO</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>	  
-          <div id="startContainer" class="inner cover">
-            <p class="lead">
-             <div class="endMessage">You missed these videos, want to watch them?</div>
-             </p>
-            <p class="lead">
-	           <div class="videoList">
-             	 <script id="listTemplate" type="text/template">
-             	{{#items}}
-	             	<div class="videoPod">
-	             	<div class="id">{{id}}</div>
-				 		{{#snippet}}
-	             		<div class="thumb">{{#thumbnails}}{{#default}}<img src="{{url}}" width="{{width}}" height="{{height}}" alt="{{title}}"/>{{/default}}{{/thumbnails}}</div>
-				 		<div class="title">{{title}}</div>
-				 		{{/snippet}}
-	             	</div>
-	             {{/items}}
-	              </script>
-	           </div>
-            </p>
-          </div>
+				<div class="mastfoot">
+					<div class="inner">
+						<p>Powered by Good Music, brought to you by Soulshifers, Circle of Fire, SourPatch, Flo-ology and Catch the Ghost.</p>
+					</div>
+				</div>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Powered by Good Music, brought to you by Soulshifers, Circle of Fire, SourPatch, Flo-ology and Catch the Ghost.</p>
-            </div>
-          </div>
-          
-        </div>
+			</div>
 
-      </div>
+		</div>
 
-    </div>
+	</div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-<!-- Latest compiled and minified JavaScript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="swfobject.js"></script>
-<script src="mustache.js"></script>
-<script src="dvs_playlist.js"></script>
-<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="components/swfobject.js"></script>
+	<script src="components/mustache.js"></script>
+	<script src="js/dvs_playlist.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 
-  </body>
+</body>
 </html>

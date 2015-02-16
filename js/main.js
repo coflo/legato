@@ -18,12 +18,13 @@ mainVideo - var is the state keeper of the movie, we dump the state of where we 
 
 */
 
-var mainVideo = 
-					{ 'name': 'chapter1',
+var mainVideo =
+					{
+						'name': 'chapter1',
 						'time': 0
-						
-					}; 					
-					
+
+					};
+
 var danceVideosSkipped = [];
 
 
@@ -46,61 +47,61 @@ $('#startLegato').click(
 		$('.mastfoot').hide();
 		$('.masthead').hide();
 		$('#movieContainer').css('width', '100%');
-		$('#movieContainer').css('height','100%');
-		
-		
-		startTheShow();		
+		$('#movieContainer').css('height', '100%');
+
+
+		startTheShow();
 	}
-);  
+);
 
 
 $('.chapterButtonsDance').click( //click actions for dance choices
-	function() {
+	function () {
 		if (mainVideo.name == 'chapter2Choice') {
 			mainVideo.name = 'chapter3Dance'; //there is no chapter 1 dance
 			ytplayer.loadVideoById(danceVideo1YTid, 0, 'large'); //first dance video
 			changeControls(2);
 			console.log('loading first dance video');
-		} 
-		
+		}
+
 		else if (mainVideo.name == 'chapter3Choice') {
 			mainVideo.name = 'chapterDanceFinal';
 			ytplayer.loadVideoById(danceVideo2YTid, 0, 'large'); //first dance video
 			changeControls(3);
 			console.log('loading second dance video');
 		}
-		
+
 		else {
 			console.log('trying to load something not correct...broken!');
 		}
-		
+
 	}
 );
 
 
 
 $('.chapterButtonsSkip').click( //click action for skip choices
-	function() {
+	function () {
 		if (mainVideo.name == 'chapter2Choice') {
 			mainVideo.name = 'chapter3Choice';
 			danceVideosSkipped.push(danceVideo1YTid);
 			playVideo();
 			changeControls(2);
-			console.log('Skipping and carrying onto' +mainVideo.name);
-		} 
-		
+			console.log('Skipping and carrying onto' + mainVideo.name);
+		}
+
 		else if (mainVideo.name == 'chapter3Choice') {
 			mainVideo.name = 'chapterFinal';
 			danceVideosSkipped.push(danceVideo2YTid);
 			playVideo();
 			changeControls(3);
-			console.log('Skipping and carrying onto' +mainVideo.name);
-		} 
-		
+			console.log('Skipping and carrying onto' + mainVideo.name);
+		}
+
 		else {
 			console.log('trying to load something not correct...broken!');
 		}
-		
+
 	}
 );
 
@@ -108,34 +109,34 @@ $('.chapterButtonsSkip').click( //click action for skip choices
 
 function changeControls(chapter) { //maintaing the DOM for the controls
 	$('.chapterControls').hide(); //hide the controls
-	
-	if (chapter == 2) {	
+
+	if (chapter == 2) {
 		$('.chapterButtonsDance').html('Lets Dance Again..');
 		$('.chapterButtonsSkip').html('Lets Skip Again..');
 	} else if (chapter == 3) {	//not used right now
 		$('.chapterButtonsDance').html('Lets Dance Again Again..');
 		$('.chapterButtonsSkip').html('Lets Skip Again Again..');
 	}
-	
+
 }
 
 function checkTime() {
-	
-	 if (Math.round(ytplayer.getCurrentTime()) == 4 && mainVideo.name == 'chapter1') { //checking for chapter 1 choice
-	 	mainVideo.time = 4;
+
+	if (Math.round(ytplayer.getCurrentTime()) == 4 && mainVideo.name == 'chapter1') { //checking for chapter 1 choice
+		mainVideo.time = 4;
 		mainVideo.name = 'chapter2Choice';
 		pauseVideo();
 		$('.chapterControls').show();
 	}
-	
-	 else if (Math.round(ytplayer.getCurrentTime()) == 10 && (mainVideo.name == 'chapter3Choice' || mainVideo.name == 'chapter3Dance')) {
+
+	else if (Math.round(ytplayer.getCurrentTime()) == 10 && (mainVideo.name == 'chapter3Choice' || mainVideo.name == 'chapter3Dance')) {
 		mainVideo.name = 'chapter3Choice';
-	 	mainVideo.time = 10;
+		mainVideo.time = 10;
 		pauseVideo();
 		$('.chapterControls').show();
 	}
-	
-	 else  if (mainVideo == 'chapter1') {
+
+	else if (mainVideo == 'chapter1') {
 		console.log('Chapter 1 player...');
 	}
 }
@@ -148,45 +149,45 @@ function playVideo() {
 	ytplayer.playVideo();
 }
 
-function playerStateChange (newState) {
+function playerStateChange(newState) {
 	playerState = newState;
-	console.log ('Players new state: ' + playerState);
-	
+	console.log('Players new state: ' + playerState);
+
 	if (playerState == 0 & mainVideo.name == 'chapter3Dance') {
-		ytplayer.loadVideoById(mainVideoYTid, mainVideo.time+1, 'large'); //first dance video
+		ytplayer.loadVideoById(mainVideoYTid, mainVideo.time + 1, 'large'); //first dance video
 	}
-	
+
 	else if (playerState == 0 & mainVideo.name == 'chapterDanceFinal') {
-		ytplayer.loadVideoById(mainVideoYTid, mainVideo.time+1, 'large');
+		ytplayer.loadVideoById(mainVideoYTid, mainVideo.time + 1, 'large');
 		mainVideo.name = 'chapterFinal';
 	}
-	
+
 	else if (playerState == 0 & mainVideo.name == 'chapterFinal') {
-	
-		window.location = 'theend.html?list='+danceVideosSkipped;
-	
+
+		window.location = 'theend.html?list=' + danceVideosSkipped;
+
 	}
-	
+
 }
 
-function onYouTubePlayerReady(playerId) {	
-    ytplayer = $('#myytplayer')[0];
-    ytplayer.addEventListener('onStateChange', 'playerStateChange');
-    ytplayer.playVideo();
-   
-    setInterval(checkTime, 1000);
-	
-    console.log('DEBUG: Player ready',playerId);
-   
-    
+function onYouTubePlayerReady(playerId) {
+	ytplayer = $('#myytplayer')[0];
+	ytplayer.addEventListener('onStateChange', 'playerStateChange');
+	ytplayer.playVideo();
+
+	setInterval(checkTime, 1000);
+
+	console.log('DEBUG: Player ready', playerId);
+
+
 }
-  
+
 function startTheShow() {    // start things up
-   
-    var params = { allowScriptAccess: 'always' };
-    var atts = { id: 'myytplayer' };
-    swfobject.embedSWF('http://www.youtube.com/v/'+mainVideoYTid+'?enablejsapi=1&playerapiid=ytplayer&version=3',
-                       'player', '100%', '100%', '8', null, null, params, atts);  
+
+	var params = { allowScriptAccess: 'always' };
+	var atts = { id: 'myytplayer' };
+	swfobject.embedSWF('http://www.youtube.com/v/' + mainVideoYTid + '?enablejsapi=1&playerapiid=ytplayer&version=3',
+										 'player', '100%', '100%', '8', null, null, params, atts);
 }
 
 
